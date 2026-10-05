@@ -2105,10 +2105,12 @@ input, select, textarea { font-family: inherit; }
 
     .main-content {
         margin-left: 0;
+        min-width: 0;
+        width: 100%;
         padding-bottom: 88px;
     }
 
-    .page { padding: 20px 16px 32px; }
+    .page { min-width: 0; max-width: 100%; padding: 20px 20px 32px; }
 
     .page-header {
         flex-direction: column;
@@ -2160,7 +2162,13 @@ input, select, textarea { font-family: inherit; }
     .tl-item-label { grid-column: 2 / -1; font-size: 12px; overflow-wrap: anywhere; }
     .tl-item-date { grid-column: 3; grid-row: 1; font-size: 12px; }
 
-    .pipeline { padding: 16px 18px; }
+    .pipeline { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; padding: 14px 12px; }
+    .pipe-stage { min-width: 0; flex-direction: column; align-items: center; gap: 6px; }
+    .pipe-stage + .pipe-stage { padding-left: 0; }
+    .pipe-stage + .pipe-stage::before { display: none; }
+    .pipe-text { text-align: center; }
+    .pipe-name { font-size: 11px; }
+    .pipe-count { font-size: 16px; }
     .pipe-aside { display: none; }
 
     .search-box { max-width: 100%; flex-basis: 100%; }
@@ -2254,10 +2262,11 @@ input, select, textarea { font-family: inherit; }
 
 @media (max-width: 560px) {
     #page-dashboard .stats-summary { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-    #page-dashboard .stats-value { font-size: 34px; }
+    #page-dashboard .stats-value { font-size: 32px; }
+    #page-dashboard .stat-card { padding: 14px 12px; min-height: 96px; }
     #page-dashboard .stat-label { font-size: 12px; }
     #page-dashboard .dashboard-header .page-title { font-size: 30px; }
-    .hero-art { width: 100px; }
+    .hero-art { width: 86px; max-width: 27vw; }
     .modal-overlay { padding: 14px; }
     .modal-header { padding: 16px 18px; }
     .modal-body { padding: 18px; }
@@ -2285,8 +2294,8 @@ body, .app-container { overflow-x: hidden; }
 
 @media (max-width: 360px) {
     #page-dashboard .stats-value { font-size: 32px; }
-    #page-dashboard .stat-card { padding: 14px; }
-    .hero-art { width: 90px; }
+    #page-dashboard .stat-card { padding: 14px 10px; }
+    .hero-art { width: 80px; }
     #page-dashboard .dashboard-header .page-title { font-size: 28px; }
 }
 
