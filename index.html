@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>求职进度助手</title>
+    <title>求职进度助手 · Editorial Edition</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="editorial.css">
 </head>
 <body>
 
@@ -56,6 +57,7 @@
                 <span>设置</span>
             </button>
         </nav>
+        <div class="editorial-sidebar-note"><span class="editorial-note-line"></span><p>每一次出发，<br>都值得认真记录。</p><span>ONE STEP AT A TIME</span></div>
     </aside>
 
     <!-- Main Content -->
@@ -65,8 +67,15 @@
         <div class="page" id="page-dashboard">
             <div class="dashboard-header">
                 <div class="dashboard-header-left">
+                    <p class="editorial-eyebrow"><span></span> YOUR NEXT CHAPTER</p>
                     <h1 class="page-title"><span class="title-underline">求职进度</span></h1>
-                    <p class="page-subtitle">把值得跟进的机会，留在眼前。</p>
+                    <p class="page-subtitle"><span>把值得跟进的机会，</span><span>留在眼前。</span></p>
+<div class="dashboard-actions">
+                <button class="btn btn-primary" id="btn-add-job-dash">
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M7.5 2.5v10M2.5 7.5h10"/></svg>
+                    添加岗位
+                </button>
+            </div>
                 </div>
 
                 <!-- Application note: envelope, resume and a small paper plane -->
@@ -89,13 +98,7 @@
                 </svg>
             </div>
 
-            <div class="dashboard-actions">
-                <button class="btn btn-primary" id="btn-add-job-dash">
-                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M7.5 2.5v10M2.5 7.5h10"/></svg>
-                    添加岗位
-                </button>
-            </div>
-
+            <div class="editorial-summary-caption"><span>THE OPPORTUNITY JOURNAL</span><span aria-hidden="true">01 — OVERVIEW</span></div>
             <div class="dashboard-total">
                 <p class="dashboard-total-main">
                     <span class="dashboard-total-text">正在关注</span>
