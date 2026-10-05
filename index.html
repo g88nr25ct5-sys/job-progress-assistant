@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>求职进度助手</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <svg class="sidebar-logo" width="26" height="26" viewBox="0 0 26 26" fill="none">
+                <rect x="3" y="3" width="20" height="20" rx="4" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M8 9h10M8 13h7M8 17h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <span class="sidebar-title">求职进度助手</span>
+        </div>
+        <nav class="nav-menu">
+            <button class="nav-item active" data-page="dashboard">
+                <span class="nav-icon">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.5 7L8 1.8 14.5 7"/><path d="M3 6v8h3.5V9.5h3V14H13V6"/></svg>
+                </span>
+                <span>首页</span>
+            </button>
+            <button class="nav-item" data-page="jobs">
+                <span class="nav-icon">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1.5" y="4.5" width="13" height="9.5" rx="1.5"/><path d="M5.5 4.5V3a1 1 0 011-1h3a1 1 0 011 1v1.5M1.5 8h13M6.5 8v2h3V8"/></svg>
+                </span>
+                <span>我的岗位</span>
+            </button>
+            <button class="nav-item" data-page="schedule">
+                <span class="nav-icon">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5"/><path d="M5 1.5v3M11 1.5v3M2 6.5h12M5 9h2M9 9h2M5 11.5h2"/></svg>
+                </span>
+                <span>日程</span>
+            </button>
+            <button class="nav-item" data-page="interviews">
+                <span class="nav-icon">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="4" cy="5" r="2"/><circle cx="12" cy="5" r="2"/><path d="M1.5 14v-2.5a2.5 2.5 0 015 0V14M9.5 14v-2.5a2.5 2.5 0 015 0V14M7 3h2M7 6h2M6.5 9h3"/></svg>
+                </span>
+                <span>面试</span>
+            </button>
+            <button class="nav-item" data-page="resumes">
+                <span class="nav-icon">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 1.5h6l4 4V14.5H3zM9 1.5v4h4M5.5 8h5M5.5 10.5h5M5.5 13h3"/></svg>
+                </span>
+                <span>简历</span>
+            </button>
+            <button class="nav-item" data-page="settings">
+                <span class="nav-icon">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="2.5"/><path d="M8 1.5v1.2M8 13.3v1.2M1.5 8h1.2M13.3 8h1.2M3.4 3.4l.9.9M11.7 11.7l.9.9M3.4 12.6l.9-.9M11.7 4.3l.9-.9"/></svg>
+                </span>
+                <span>设置</span>
+            </button>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Dashboard -->
+        <div class="page" id="page-dashboard">
+            <div class="dashboard-header">
+                <div class="dashboard-header-left">
+                    <h1 class="page-title"><span class="title-underline">求职进度</span></h1>
+                    <p class="page-subtitle">把值得跟进的机会，留在眼前。</p>
+                </div>
+
+                <!-- Application note: envelope, resume and a small paper plane -->
+                <svg class="hero-art" viewBox="0 0 220 140" width="220" height="140" role="img" aria-label="打开的信封中露出简历，旁边有纸飞机与星光">
+                    <g fill="none" stroke="#57515C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <!-- Open flap, then the paper tucked inside. -->
+                        <path d="M37 64l58-39a8 8 0 019 0l58 39v58H37z" fill="#F0ECFA"/>
+                        <path d="M63 19h60l15 15v62H63z" fill="#FCFAF7"/>
+                        <path d="M123 19v15h15M76 45h45M76 56h36M76 67h42"/>
+                        <!-- Front of the envelope gently covers the resume. -->
+                        <path d="M37 64l63 42 62-42v58a5 5 0 01-5 5H42a5 5 0 01-5-5z" fill="#F0ECFA"/>
+                        <path d="M40 123l43-30M159 123l-43-30"/>
+                        <!-- A small plane points towards the next opportunity. -->
+                        <path d="M164 38l40-16-12 36-11-15z" fill="#EAF2ED"/>
+                        <path d="M181 43l23-21M181 43l-1 12 7-8"/>
+                        <!-- Three restrained sparkles. -->
+                        <path d="M29 27l2.5 6.5L38 36l-6.5 2.5L29 45l-2.5-6.5L20 36l6.5-2.5z" fill="#F7F0E3"/>
+                        <path d="M183 91v9M178.5 95.5h9M150 10v6M147 13h6"/>
+                    </g>
+                </svg>
+            </div>
+
+            <div class="dashboard-actions">
+                <button class="btn btn-primary" id="btn-add-job-dash">
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M7.5 2.5v10M2.5 7.5h10"/></svg>
+                    添加岗位
+                </button>
+            </div>
+
+            <div class="dashboard-total">
+                <p class="dashboard-total-main">
+                    <span class="dashboard-total-text">正在关注</span>
+                    <span class="dashboard-total-value" id="stat-total">0</span>
+                    <span class="dashboard-total-ending">
+                        <span class="dashboard-total-text">个岗位</span>
+                        <svg class="dashboard-total-art" viewBox="0 0 28 28" aria-hidden="true">
+                    <g stroke="#57515C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 12L25 3l-8 22-5-10z" fill="#EAF2ED"/>
+                        <path d="M12 15L25 3" fill="none"/>
+                    </g>
+                </svg>
+                    </span>
+                </p>
+
+            </div>
+
+            <!-- Summary Cards — Editorial Pastel -->
+            <div class="stats-summary" id="stats-summary">
+                <!-- 已投递 -->
+                <div class="stat-card stat-card-lav">
+                    <div class="stat-card-art" aria-hidden="true">
+                        <svg class="card-art-svg" viewBox="0 0 180 130" fill="none">
+                            <path class="ln" d="M20 22h84l14 18h54a8 8 0 018 8v70H20V22z"/>
+                            <path class="ln" d="M20 48h160M20 82h160M20 106h160"/>
+                            <path class="ln" d="M104 14l62-8-22 54-14-16-26-30z"/>
+                            <path class="ln-thin" d="M130 44l36-38"/>
+                            <path class="ln-thin" d="M58 12l2.6 7 7 2.6-7 2.6-2.6 7-2.6-7-7-2.6 7-2.6L58 12z"/>
+                        </svg>
+                    </div>
+                    <div class="stat-card-body">
+                        <span class="stats-value" id="stat-applied">0</span>
+                        <span class="stat-label" title="累计投递岗位数">已投递</span>
+                    </div>
+                </div>
+
+                <!-- 面试 -->
+                <div class="stat-card stat-card-butter">
+                    <div class="stat-card-art" aria-hidden="true">
+                        <svg class="card-art-svg" viewBox="0 0 180 130" fill="none">
+                            <circle class="ln" cx="62" cy="44" r="14"/>
+                            <circle class="ln" cx="120" cy="44" r="14"/>
+                            <path class="ln" d="M36 112V94a26 26 0 0152 0v18"/>
+                            <path class="ln" d="M94 112V94a26 26 0 0152 0v18"/>
+                            <path class="ln-thin" d="M78 28h22M78 42h22M76 62h26"/>
+                        </svg>
+                    </div>
+                    <div class="stat-card-body">
+                        <span class="stats-value" id="stat-interview">0</span>
+                        <span class="stat-label" title="累计面试场次数，含过去与未来">面试</span>
+                    </div>
+                </div>
+
+                <!-- Offer -->
+                <div class="stat-card stat-card-sage">
+                    <div class="stat-card-art" aria-hidden="true">
+                        <svg class="card-art-svg" viewBox="0 0 180 130" fill="none">
+                            <path class="ln" d="M18 34h144v82H18z"/>
+                            <path class="ln" d="M18 34l72 50 72-50"/>
+                            <path class="ln" d="M18 116l52-40M162 116l-52-40"/>
+                            <path class="ln" d="M146 18l4.4 12 12 4.4-12 4.4-4.4 12-4.4-12-12-4.4 12-4.4 4.4-12z"/>
+                            <path class="ln-thin" d="M34 12l2.4 6.4 6.4 2.4-6.4 2.4-2.4 6.4-2.4-6.4-6.4-2.4 6.4-2.4L34 12z"/>
+                        </svg>
+                    </div>
+                    <div class="stat-card-body">
+                        <span class="stats-value" id="stat-offer">0</span>
+                        <span class="stat-label" title="累计收到过的 Offer">Offer</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming -->
+            <div class="dashboard-section dashboard-upcoming">
+                <div class="section-header">
+                    <h2 class="section-title">接下来</h2>
+                    <span class="section-hint">最近值得留意的安排</span>
+                </div>
+                <div class="paper-divider" aria-hidden="true"></div>
+                <div class="todo-list" id="dashboard-todos"></div>
+            </div>
+
+            <!-- Pipeline -->
+            <div class="dashboard-section">
+                <div class="section-header">
+                    <h2 class="section-title">投递阶段</h2>
+                </div>
+                <div class="pipeline" id="progress-overview"></div>
+            </div>
+        </div>
+
+        <!-- Jobs -->
+        <div class="page hidden" id="page-jobs">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title title-row">我的岗位<svg class="lineart doodle doodle-title" viewBox="0 0 34 34" aria-hidden="true"><path class="ln f-lav" d="M5 11h9l3 4h10v13H5z"/><path class="ln" d="M5 19h22"/></svg></h1>
+                    <p class="page-subtitle">集中管理感兴趣、值得继续跟进的岗位。</p>
+                </div>
+                <button class="btn btn-primary" id="btn-add-job">
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M7.5 2.5v10M2.5 7.5h10"/></svg>
+                    添加岗位
+                </button>
+            </div>
+            <div class="filter-bar">
+                <div class="search-box">
+                    <span class="search-icon">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="6" cy="6" r="4.5"/><path d="M9.5 9.5L12 12"/></svg>
+                    </span>
+                    <input type="text" class="search-input" id="search-input" placeholder="搜索岗位...">
+                </div>
+                <select class="filter-select" id="filter-status">
+                    <option value="">全部状态</option>
+                    <option value="已投递">已投递</option>
+                    <option value="笔试/测评">笔试/测评</option>
+                    <option value="一面">一面</option>
+                    <option value="二面">二面</option>
+                    <option value="终面">终面</option>
+                    <option value="Offer">Offer</option>
+                    <option value="已拒绝">已拒绝</option>
+                    <option value="已结束">已结束</option>
+                </select>
+                <select class="filter-select" id="filter-city">
+                    <option value="">全部城市</option>
+                </select>
+                <button type="button" class="favorite-filter" id="filter-favorite" aria-pressed="false">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.4 5.4 0 00-7.6 0L12 5.8l-1.2-1.2a5.4 5.4 0 00-7.6 7.6L12 21l8.8-8.8a5.4 5.4 0 000-7.6z"/></svg>
+                    <span>只看收藏</span>
+                </button>
+            </div>
+            <div id="jobs-list"></div>
+        </div>
+
+        <!-- Schedule -->
+        <div class="page hidden" id="page-schedule">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title title-row">日程<svg class="lineart doodle doodle-title" viewBox="0 0 34 34" aria-hidden="true"><rect class="ln f-butter" x="6" y="8" width="22" height="22" rx="3"/><path class="ln" d="M6 15h22M12 5v6M22 5v6M12 21h3M20 21h3"/></svg></h1>
+                    <p class="page-subtitle">重要的截止、测评和面试时间，一眼看清。</p>
+                </div>
+            </div>
+            <div id="schedule-timeline"></div>
+        </div>
+
+        <!-- Interviews -->
+        <div class="page hidden" id="page-interviews">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title title-row">面试<svg class="lineart doodle doodle-title" viewBox="0 0 34 34" aria-hidden="true"><circle class="ln" cx="10" cy="10" r="4"/><circle class="ln" cx="24" cy="10" r="4"/><path class="ln" d="M4 29v-7a6 6 0 0112 0v7M18 29v-7a6 6 0 0112 0v7M16 6h3M16 11h3"/></svg></h1>
+                    <p class="page-subtitle">面试安排放在这里，需要时再做复盘。</p>
+                </div>
+            </div>
+            <div id="interviews-list"></div>
+        </div>
+
+        <!-- Resumes -->
+        <div class="page hidden" id="page-resumes">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title title-row">我的简历<svg class="lineart doodle doodle-title" viewBox="0 0 34 34" aria-hidden="true"><path class="ln f-sage" d="M8 4h13l6 6v21H8z"/><path class="ln" d="M21 4v7h6M13 16h9M13 21h9M13 26h6"/></svg></h1>
+                    <p class="page-subtitle">按方向管理简历版本，添加岗位时可直接选择投递版本。</p>
+                </div>
+                <button class="btn btn-primary" id="btn-add-resume">
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M7.5 2.5v10M2.5 7.5h10"/></svg>
+                    添加简历
+                </button>
+            </div>
+            <div class="resume-filter" id="resume-filter"></div>
+            <div id="resumes-list"></div>
+        </div>
+
+        <!-- Settings -->
+        <div class="page hidden" id="page-settings">
+            <div class="page-header">
+                <div>
+                    <h1 class="page-title title-row">设置<svg class="lineart doodle doodle-title" viewBox="0 0 34 34" aria-hidden="true"><path class="ln" d="M17 30V15"/><path class="ln f-sage" d="M17 21C7 21 5 16 5 12c7 0 12 3 12 9zM17 16c0-7 5-10 12-10 0 6-4 10-12 10z"/></svg></h1>
+                    <p class="page-subtitle">数据全部保存在本地浏览器，可随时导出备份。</p>
+                </div>
+            </div>
+            <div class="settings-section">
+                <div class="settings-section-title">数据管理</div>
+                <div class="settings-list">
+                    <div class="settings-row">
+                        <div class="settings-info">
+                            <div class="settings-label">导出备份</div>
+                            <div class="settings-desc">将所有数据导出为 JSON 文件</div>
+                        </div>
+                        <button class="btn btn-secondary btn-sm" id="btn-export">导出</button>
+                    </div>
+                    <div class="settings-row">
+                        <div class="settings-info">
+                            <div class="settings-label">导入备份</div>
+                            <div class="settings-desc">从 JSON 文件恢复数据</div>
+                        </div>
+                        <button class="btn btn-secondary btn-sm" id="btn-import">导入</button>
+                        <input type="file" id="import-file" accept=".json" hidden>
+                    </div>
+                    <div class="settings-row">
+                        <div class="settings-info">
+                            <div class="settings-label">导出 CSV</div>
+                            <div class="settings-desc">将岗位数据导出为 Excel 可读的 CSV 文件</div>
+                        </div>
+                        <button class="btn btn-secondary btn-sm" id="btn-csv">导出 CSV</button>
+                    </div>
+                </div>
+            </div>
+            <div class="settings-section">
+                <div class="settings-section-title">危险操作</div>
+                <div class="settings-list">
+                    <div class="settings-row settings-danger">
+                        <div class="settings-info">
+                            <div class="settings-label">清除全部数据</div>
+                            <div class="settings-desc">删除所有岗位和简历数据，此操作不可恢复</div>
+                        </div>
+                        <button class="btn btn-danger btn-sm" id="btn-clear">清除</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<!-- Add/Edit Job Modal -->
+<div class="modal-overlay hidden" id="job-modal">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="modal-title" id="modal-title">添加岗位</span>
+            <button class="modal-close" onclick="closeJobModal()">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+            </button>
+        </div>
+        <form id="job-form" class="modal-form">
+            <div class="modal-body">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="company">公司名称 <span class="required">*</span></label>
+                        <input type="text" class="form-input" id="company" required placeholder="字节跳动">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="role">岗位名称 <span class="required">*</span></label>
+                        <input type="text" class="form-input" id="role" required placeholder="前端工程师">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="status">当前状态 <span class="required">*</span></label>
+                    <select class="form-select" id="status" onchange="onStatusChange()">
+                        <option value="收藏">收藏</option>
+                        <option value="已投递" selected>已投递</option>
+                        <option value="笔试/测评">笔试/测评</option>
+                        <option value="一面">一面</option>
+                        <option value="二面">二面</option>
+                        <option value="终面">终面</option>
+                        <option value="Offer">Offer</option>
+                        <option value="已拒绝">已拒绝</option>
+                        <option value="已结束">已结束</option>
+                    </select>
+                </div>
+
+                <!-- Assessment Block -->
+                <div class="status-block hidden" id="block-assessment">
+                    <div class="status-block-title">笔试 / 测评安排</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="assessmentDate">测评时间</label>
+                            <input type="datetime-local" class="form-input" id="assessmentDate">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="assessmentType">测评形式</label>
+                            <select class="form-select" id="assessmentType">
+                                <option value="">未填写</option>
+                                <option value="线上笔试">线上笔试</option>
+                                <option value="线下笔试">线下笔试</option>
+                                <option value="在线测评">在线测评</option>
+                                <option value="AI 面试">AI 面试</option>
+                                <option value="其他">其他</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interview Block -->
+                <div class="status-block hidden" id="block-interview">
+                    <div class="status-block-title" id="interviewBlockTitle">面试安排</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="interviewDate">面试时间</label>
+                            <input type="datetime-local" class="form-input" id="interviewDate">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="interviewMode">面试形式</label>
+                            <select class="form-select" id="interviewMode">
+                                <option value="">未填写</option>
+                                <option value="线上">线上</option>
+                                <option value="线下">线下</option>
+                                <option value="电话">电话</option>
+                                <option value="AI面试">AI面试</option>
+                                <option value="群面">群面</option>
+                                <option value="其他">其他</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="interviewNote">面试备注</label>
+                        <input type="text" class="form-input" id="interviewNote" placeholder="腾讯会议 / 二轮技术面">
+                    </div>
+                </div>
+
+                <!-- Offer Block -->
+                <div class="status-block hidden" id="block-offer">
+                    <div class="status-block-title">Offer 信息</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="offerDate">Offer 日期</label>
+                            <input type="date" class="form-input" id="offerDate">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="offerDeadline">回复截止日期</label>
+                            <input type="date" class="form-input" id="offerDeadline">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="offerSalary">薪资</label>
+                        <input type="text" class="form-input" id="offerSalary" placeholder="25-40K · 16薪">
+                    </div>
+                </div>
+
+                <!-- More Info -->
+                <div class="collapse-section">
+                    <button type="button" class="collapse-toggle" onclick="toggleMoreInfo()">
+                        <span>更多信息</span>
+                        <span class="collapse-arrow collapsed" id="collapse-arrow">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg>
+                        </span>
+                    </button>
+                    <div class="collapse-content" id="more-info">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="city">城市</label>
+                                <input type="text" class="form-input" id="city" placeholder="北京">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="salary">薪资</label>
+                                <input type="text" class="form-input" id="salary" placeholder="25-40K · 16薪">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="jobUrl">岗位链接</label>
+                            <input type="url" class="form-input" id="jobUrl" placeholder="https://...">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="deadline">截止日期</label>
+                                <input type="date" class="form-input" id="deadline">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="applicationDate">投递日期</label>
+                                <input type="date" class="form-input" id="applicationDate">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="resumeId">投递简历</label>
+                            <select class="form-select" id="resumeId">
+                                <option value="">未指定</option>
+                            </select>
+                            <div class="form-hint hidden" id="resume-hint">暂无简历，可前往「简历」页面添加</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="notes">备注</label>
+                            <textarea class="form-textarea" id="notes" rows="2" placeholder="其他备注信息..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeJobModal()">取消</button>
+                <button type="submit" class="btn btn-primary" id="job-submit-btn">保存</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Job Detail Modal -->
+<div class="modal-overlay hidden" id="detail-modal">
+    <div class="modal modal-large">
+        <div class="modal-header">
+            <span class="modal-title">岗位详情</span>
+            <button class="modal-close" onclick="closeDetailModal()">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+            </button>
+        </div>
+        <div class="modal-body" id="detail-content"></div>
+    </div>
+</div>
+
+<!-- Interview Modal -->
+<div class="modal-overlay hidden" id="interview-modal">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="modal-title" id="interview-modal-title">添加面试信息</span>
+            <button class="modal-close" onclick="closeInterviewModal()">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+            </button>
+        </div>
+        <form id="interview-form" class="modal-form">
+            <div class="modal-body">
+                <div class="status-block flush-top">
+                    <div class="status-block-title" id="interview-modal-title-inner">面试安排</div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="mInterviewDate">面试时间</label>
+                            <input type="datetime-local" class="form-input" id="mInterviewDate">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="mInterviewMode">面试形式</label>
+                            <select class="form-select" id="mInterviewMode">
+                                <option value="">未填写</option>
+                                <option value="线上">线上</option>
+                                <option value="线下">线下</option>
+                                <option value="电话">电话</option>
+                                <option value="AI面试">AI面试</option>
+                                <option value="群面">群面</option>
+                                <option value="其他">其他</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="mInterviewNote">面试备注</label>
+                        <input type="text" class="form-input" id="mInterviewNote" placeholder="侧重项目深挖">
+                    </div>
+                </div>
+
+                <div class="collapse-section flush-top">
+                    <button type="button" class="collapse-toggle" onclick="toggleReview()">
+                        <span>面试复盘（可选）</span>
+                        <span class="collapse-arrow collapsed" id="review-arrow">
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg>
+                        </span>
+                    </button>
+                    <div class="collapse-content" id="review-section">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="mReviewQuestions">面试问题</label>
+                                <textarea class="form-textarea" id="mReviewQuestions" rows="2" placeholder="记录面试中遇到的问题..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="mReviewAnswers">我的回答</label>
+                                <textarea class="form-textarea" id="mReviewAnswers" rows="2" placeholder="记录自己的回答..."></textarea>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="mReviewGood">做得好的地方</label>
+                                <textarea class="form-textarea" id="mReviewGood" rows="2" placeholder="表现好的地方..."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="mReviewImprove">需要改进</label>
+                                <textarea class="form-textarea" id="mReviewImprove" rows="2" placeholder="需要改进的地方..."></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="mReviewNote">备注</label>
+                            <input type="text" class="form-input" id="mReviewNote" placeholder="其他想记录的...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeInterviewModal()">取消</button>
+                <button type="submit" class="btn btn-primary">保存面试信息</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Resume Modal -->
+<div class="modal-overlay hidden" id="resume-modal">
+    <div class="modal">
+        <div class="modal-header">
+            <span class="modal-title" id="resume-modal-title">添加简历</span>
+            <button class="modal-close" onclick="closeResumeModal()">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+            </button>
+        </div>
+        <form id="resume-form" class="modal-form">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label" for="resumeName">简历名称 <span class="required">*</span></label>
+                    <input type="text" class="form-input" id="resumeName" required placeholder="数据分析版 V2">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="resumeCategory">目标方向 <span class="required">*</span></label>
+                    <select class="form-select" id="resumeCategory" required>
+                        <option value="">选择方向</option>
+                        <option value="数据分析">数据分析</option>
+                        <option value="商业分析">商业分析</option>
+                        <option value="产品">产品</option>
+                        <option value="运营">运营</option>
+                        <option value="金融">金融</option>
+                        <option value="咨询">咨询</option>
+                        <option value="技术">技术</option>
+                        <option value="其他">其他</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="resumeNotes">备注</label>
+                    <textarea class="form-textarea" id="resumeNotes" rows="2" placeholder="可选备注..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="resumeFile">简历文件</label>
+                    <div class="file-upload-wrapper">
+                        <input type="file" class="file-input" id="resumeFile" accept=".pdf,.doc,.docx">
+                        <div class="file-upload-area" id="file-upload-area">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10 3v10m0 0l-4-4m4 4l4-4"/>
+                                <path d="M3 14v2a1 1 0 001 1h12a1 1 0 001-1v-2"/>
+                            </svg>
+                            <span>点击上传或拖拽文件</span>
+                            <span class="file-upload-hint">支持 PDF、DOC、DOCX，最大 8MB</span>
+                        </div>
+                    </div>
+                    <div class="file-info hidden" id="file-info">
+                        <span class="file-name"></span>
+                        <span class="file-size"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeResumeModal()">取消</button>
+                <button type="submit" class="btn btn-primary" id="resume-submit-btn">保存简历</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Confirm Modal -->
+<div class="modal-overlay hidden" id="confirm-modal">
+    <div class="modal modal-small">
+        <div class="modal-header">
+            <span class="modal-title" id="confirm-title">确认操作</span>
+            <button class="modal-close" onclick="closeConfirmModal()">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+            </button>
+        </div>
+        <div class="modal-body">
+            <p class="confirm-message" id="confirm-message">确定要删除这个项目吗？此操作不可恢复。</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="closeConfirmModal()">取消</button>
+            <button type="button" class="btn btn-danger" id="confirm-delete-btn">确认删除</button>
+        </div>
+    </div>
+</div>
+
+<!-- Advance Stage Modal -->
+<div class="modal-overlay hidden" id="advance-modal">
+    <div class="modal modal-small">
+        <div class="modal-header">
+            <span class="modal-title" id="advance-title">进入下一阶段</span>
+            <button class="modal-close" onclick="closeAdvanceModal()">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+            </button>
+        </div>
+        <form id="advance-form" class="modal-form">
+            <div class="modal-body">
+                <p class="form-hint spaced" id="advance-desc"></p>
+                <div class="form-group">
+                    <label class="form-label" for="advanceDate" id="advanceDateLabel">时间（可选）</label>
+                    <input type="datetime-local" class="form-input" id="advanceDate">
+                </div>
+                <div class="form-group hidden" id="advanceModeGroup">
+                    <label class="form-label" for="advanceMode">形式</label>
+                    <select class="form-select" id="advanceMode">
+                        <option value="">未填写</option>
+                        <option value="线上">线上</option>
+                        <option value="线下">线下</option>
+                        <option value="电话">电话</option>
+                        <option value="AI面试">AI面试</option>
+                        <option value="群面">群面</option>
+                        <option value="其他">其他</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-text" onclick="advanceWithoutSchedule()">暂时跳过</button>
+                <button type="button" class="btn btn-secondary" onclick="closeAdvanceModal()">取消</button>
+                <button type="submit" class="btn btn-primary">保存</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
